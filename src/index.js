@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import store, { history } from './store'
-import './styles/css/index.css'
+import './styles/index.scss'
 
 const target = document.getElementById('root')
 

@@ -29,3 +29,4 @@ Thanks all authors of these articles and repositories:
 * https://github.com/davezuko/react-redux-starter-kit
 * https://serverless-stack.com/chapters/code-splitting-in-create-react-app.html
 * https://tylermcginnis.com/react-router-code-splitting/
+* https://github.com/facebook/create-react-app/issues/3815
