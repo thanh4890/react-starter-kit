@@ -17,7 +17,7 @@ export default [
         path: '/about',
         component: AsyncAbout,
         exact: true
-      },
+      }
     ]
   }
 ]
