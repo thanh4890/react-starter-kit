@@ -30,3 +30,4 @@ Thanks all authors of these articles and repositories:
 * https://serverless-stack.com/chapters/code-splitting-in-create-react-app.html
 * https://tylermcginnis.com/react-router-code-splitting/
 * https://github.com/facebook/create-react-app/issues/3815
+* https://reactjs.org/blog/2018/10/23/react-v-16-6.html
