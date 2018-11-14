@@ -1,30 +1,14 @@
-import React, { Component } from 'react'
+import React, { Suspense } from 'react'
 
-// @see https://serverless-stack.com/chapters/code-splitting-in-create-react-app.html
 export default function asyncComponent(importComponent) {
-  class AsyncComponent extends Component {
-    constructor(props) {
-      super(props)
+  const C = React.lazy(importComponent)
 
-      this.state = {
-        component: null
-      }
-    }
-
-    async componentDidMount() {
-      const { default: component } = await importComponent()
-
-      this.setState({
-        component: component
-      })
-    }
-
-    render() {
-      const C = this.state.component
-
-      return C ? <C {...this.props} /> : null
-    }
-  }
+  // use lazy loading https://reactjs.org/blog/2018/10/23/react-v-16-6.html
+  const AsyncComponent = () => (
+    <Suspense fallback={<div>Loading...</div>}>
+      <C />
+    </Suspense>
+  )
 
   return AsyncComponent
 }
