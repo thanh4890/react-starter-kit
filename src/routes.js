@@ -1,5 +1,5 @@
 import DefaultLayout from './layouts/DefaultLayout'
-import asyncComponent from './components/LazyComponent'
+import asyncComponent from './components/AsyncComponent'
 
 const AsyncHome = asyncComponent(() => import('./containers/home'))
 const AsyncAbout = asyncComponent(() => import('./containers/about'))
