@@ -3,47 +3,33 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "husky": "^0.14.3",
-    "lint-staged": "^7.0.0",
-    "prettier": "^1.11.0"
+    "prettier": "^1.15.3",
+    "pretty-quick": "^1.8.0"
   },
   "dependencies": {
-    "connected-react-router": "^4.3.0",
-    "lodash": "^4.17.10",
+    "connected-react-router": "^6.0.0",
     "node-sass": "^4.9.2",
-    "react": "^16.6.1",
-    "react-dom": "^16.6.1",
-    "react-redux": "^5.0.6",
-    "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-redux": "^6.0.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.1",
-    "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0",
-    "sanitize.css": "^5.0.0"
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "sanitize.css": "^8.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "precommit": "lint-staged"
+    "precommit": "pretty-quick --staged"
   },
-  "lint-staged": {
-    "*.js": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "browserslist": {
-    "development": [
-      "last 2 chrome versions",
-      "last 2 firefox versions",
-      "last 2 edge versions"
-    ],
-    "production": [
-      ">0.25%",
-      "not op_mini all",
-      "ie 11"
-    ]
-  }
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

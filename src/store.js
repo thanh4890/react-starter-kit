@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware, compose } from 'redux'
-import { connectRouter, routerMiddleware } from 'connected-react-router'
+import { routerMiddleware } from 'connected-react-router'
 import thunk from 'redux-thunk'
-import createHistory from 'history/createBrowserHistory'
-import rootReducer from './modules'
+import { createBrowserHistory } from 'history'
+import createRootReducer from './modules'
 
-export const history = createHistory()
+export const history = createBrowserHistory()
 
 const initialState = {}
 const enhancers = []
@@ -25,7 +25,7 @@ const composedEnhancers = compose(
 
 // @see https://github.com/facebook/create-react-app/issues/2317
 const store = createStore(
-  connectRouter(history)(rootReducer),
+  createRootReducer(history),
   initialState,
   composedEnhancers
 )
@@ -33,7 +33,7 @@ const store = createStore(
 if (process.env.NODE_ENV !== 'production') {
   if (module.hot) {
     module.hot.accept('./modules', () => {
-      store.replaceReducer(connectRouter(history)(rootReducer))
+      store.replaceReducer(createRootReducer(history))
     })
   }
 }
