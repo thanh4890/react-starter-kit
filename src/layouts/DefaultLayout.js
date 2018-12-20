@@ -1,15 +1,15 @@
 import React from 'react'
-import PageLayout from './PageLayout'
+import { Route } from 'react-router-dom'
 import Header from '../components/Header'
 
 /**
- * @extends PageLayout
  * @see https://simonsmith.io/reusing-layouts-in-react-router-4/
+ * but don't use extends for now because it causes re-render <Component/> when redux state changes
  */
 const DefaultLayout = ({ component: Component, ...rest }) => (
-  <PageLayout
+  <Route
     {...rest}
-    component={matchProps => (
+    render={matchProps => (
       <React.Fragment>
         <Header />
         <Component {...matchProps} />
