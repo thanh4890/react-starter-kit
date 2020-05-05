@@ -1,41 +1,22 @@
-import { createStore, applyMiddleware, compose } from 'redux'
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 import { routerMiddleware } from 'connected-react-router'
-import thunk from 'redux-thunk'
 import { createBrowserHistory } from 'history'
-import createRootReducer from './modules'
+import createRootReducer from './reducers'
 
 export const history = createBrowserHistory()
 
-const initialState = {}
-const enhancers = []
-const middleware = [thunk, routerMiddleware(history)]
+const middleware = [...getDefaultMiddleware(), routerMiddleware(history)]
 
-if (process.env.NODE_ENV === 'development') {
-  const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__
+const store = configureStore({
+  reducer: createRootReducer(history),
+  middleware,
+})
 
-  if (typeof devToolsExtension === 'function') {
-    enhancers.push(devToolsExtension())
-  }
-}
-
-const composedEnhancers = compose(
-  applyMiddleware(...middleware),
-  ...enhancers
-)
-
-// @see https://github.com/facebook/create-react-app/issues/2317
-const store = createStore(
-  createRootReducer(history),
-  initialState,
-  composedEnhancers
-)
-
-if (process.env.NODE_ENV !== 'production') {
-  if (module.hot) {
-    module.hot.accept('./modules', () => {
-      store.replaceReducer(createRootReducer(history))
-    })
-  }
+// @see https://redux.js.org/recipes/configuring-your-store#hot-reloading
+if (process.env.NODE_ENV !== 'production' && module.hot) {
+  module.hot.accept('./reducers', () => {
+    store.replaceReducer(createRootReducer(history))
+  })
 }
 
 export default store
