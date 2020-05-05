@@ -6,9 +6,9 @@ import store, { history } from '../../store'
 import routes from '../../routes'
 
 test('renders app name', () => {
-  const { getByText } = render(
+  const { getByTestId } = render(
     <App store={store} routes={routes} history={history} />
   )
-  const nameElement = getByText(/React App/i)
-  expect(nameElement).toBeInTheDocument()
+  const app = getByTestId('app')
+  expect(app).toBeInTheDocument()
 })
