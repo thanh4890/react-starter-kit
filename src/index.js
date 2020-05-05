@@ -2,6 +2,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import store, { history } from './store'
 import './styles/index.css'
+import 'antd/dist/antd.css'
 
 const target = document.getElementById('root')
 
