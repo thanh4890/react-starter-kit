@@ -1,11 +1,16 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 import { routerMiddleware } from 'connected-react-router'
+import { middleware as apiMiddleware } from 'redux-api-call'
 import { createBrowserHistory } from 'history'
 import createRootReducer from './reducers'
 
 export const history = createBrowserHistory()
 
-const middleware = [...getDefaultMiddleware(), routerMiddleware(history)]
+const middleware = [
+  ...getDefaultMiddleware(),
+  routerMiddleware(history),
+  apiMiddleware,
+]
 
 const store = configureStore({
   reducer: createRootReducer(history),
