@@ -5,10 +5,10 @@ import {
   increment,
   incrementAsync,
   decrement,
-  decrementAsync
-} from '../../modules/counter'
+  decrementAsync,
+} from '../../reducers/counter'
 
-const Home = props => (
+const Home = (props) => (
   <div>
     <h1>Home</h1>
     <p>Count: {props.count}</p>
@@ -39,10 +39,10 @@ const Home = props => (
   </div>
 )
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   count: state.counter.count,
   isIncrementing: state.counter.isIncrementing,
-  isDecrementing: state.counter.isDecrementing
+  isDecrementing: state.counter.isDecrementing,
 })
 
 const mapDispatchToProps = {
@@ -50,10 +50,7 @@ const mapDispatchToProps = {
   incrementAsync,
   decrement,
   decrementAsync,
-  changePage: () => push('/about')
+  changePage: () => push('/about'),
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
